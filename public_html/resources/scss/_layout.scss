@@ -7,6 +7,14 @@
 }
 
 .mainField {
-  margin-top: 10%;
-  
+  margin: 10% 0 0 10%;
+  width: 600px;
+  font-size: 0;
+  .pole {
+    width: 200px;
+    height: 200px;
+    display: inline-block;
+    border: 1px solid #666;
+    cursor: pointer;
+  }
 }
