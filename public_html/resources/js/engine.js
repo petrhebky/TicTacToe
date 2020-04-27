@@ -34,6 +34,8 @@ function poleClick(poleCislo) {
           prvniHracNaTahu = !prvniHracNaTahu;
         }
         render();
+        console.log(checkWin());
+        //checkWin();
       }
       return;
     }
@@ -47,8 +49,19 @@ function render() {
   document.getElementById('playersIcon').className = prvniHracNaTahu ? 'crossBG' : 'circleBG';
 }
 
-function zjistiVyhru() {
-  
+function checkWin() {
+  //check rows
+  if (pole1.player === pole2.player && pole2.player === pole3.player && pole1.player !== 0) { return pole1.player; }
+  if (pole4.player === pole5.player && pole5.player === pole6.player && pole4.player !== 0) { return pole4.player; }
+  if (pole7.player === pole8.player && pole8.player === pole9.player && pole7.player !== 0) { return pole7.player; }
+  //check columns
+  if (pole1.player === pole4.player && pole4.player === pole7.player && pole1.player !== 0) { return pole1.player; }
+  if (pole2.player === pole5.player && pole5.player === pole8.player && pole2.player !== 0) { return pole2.player; }
+  if (pole3.player === pole6.player && pole6.player === pole9.player && pole3.player !== 0) { return pole3.player; }
+  //check diagonal
+  if (pole1.player === pole5.player && pole5.player === pole9.player && pole1.player !== 0) { return pole1.player; }
+  if (pole3.player === pole5.player && pole5.player === pole7.player && pole3.player !== 0) { return pole3.player; }
+  else {return 0;}
 }
 
 function reset() {
