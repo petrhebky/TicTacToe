@@ -8,6 +8,7 @@
 //}
 
 let prvniHracNaTahu = true;
+let winner = 0;
 let pole1 = {id:1, clicked:false, player:0, class:''};
 let pole2 = {id:2, clicked:false, player:0, class:''};
 let pole3 = {id:3, clicked:false, player:0, class:''};
@@ -33,20 +34,34 @@ function poleClick(poleCislo) {
           pole.class = 'circleBG';
           prvniHracNaTahu = !prvniHracNaTahu;
         }
+        handleWin();
         render();
-        console.log(checkWin());
-        //checkWin();
       }
       return;
     }
   });
-  
 }
+
 function render() {
   poleAll.forEach(function(pole) {
     document.getElementById('pole'+pole.id).className = 'pole ' + pole.class;
   });
   document.getElementById('playersIcon').className = prvniHracNaTahu ? 'crossBG' : 'circleBG';
+  if (winner === 0) {
+    document.getElementById('winnerWrap').style.visibility = "hidden";
+  } else {
+    document.getElementById('winner').className = (winner === 1) ? 'crossBG' : 'circleBG';
+    document.getElementById('winnerWrap').style.visibility = "visible";
+  }
+}
+
+function handleWin() {
+  winner = checkWin();
+  if (winner !== 0) {
+    poleAll.forEach(function(pole) {
+      pole.clicked = true;
+    });
+  }
 }
 
 function checkWin() {
@@ -71,6 +86,7 @@ function reset() {
     pole.class = '';
   });
   prvniHracNaTahu = true;
+  winner = 0;
   render();
 }
 

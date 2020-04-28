@@ -15,10 +15,13 @@ body {
   display: flex;
   align-items: center; }
 
-#playersIcon {
+#playersIcon, #winner {
   width: 40px;
   height: 40px;
   display: inline-block; }
+
+#winnerWrap {
+  visibility: hidden; }
 
 .mainField {
   margin: 10% 0 0 10%;
